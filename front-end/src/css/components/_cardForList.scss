@@ -1,0 +1,21 @@
+.simpleCard{
+    display: flex;
+    margin: 1em 0;
+    h1{
+        padding: 1em;
+        font-size: 2rem;
+        text-align: left;
+        width: 100%;
+    }
+    .notImg{
+        text-align: center;
+    }
+    img{
+        height:300px;
+        width: 100%;
+        max-width: 500px;
+        object-fit: cover;
+    }
+    background-color: aqua;
+    // margin: 2em 0;
+}

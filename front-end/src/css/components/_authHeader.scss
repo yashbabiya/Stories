@@ -1,0 +1,104 @@
+.logo{
+    text-transform: uppercase !important;
+    background-color: black;
+    color: white;
+    padding: 1em 2em;
+    position: relative;
+    height:50px;
+    z-index: 100 !important;
+    box-shadow: 5px 5px 0px -2px rgb(255, 255, 255),5px 5px 0px 0px black;
+    letter-spacing: 7px;
+    font-size: 12px;
+    font-weight: bolder;
+}
+.miniHeader{
+    display: none ;
+    position: relative;
+    z-index: 100 !important;
+}
+
+// .logo::before{
+//         content: 'Stories';
+//         // color: black;
+//         position: absolute;
+//         z-index: -1 !important;
+//         width: 100%;
+//         height: 100%;
+//         top:4px;
+//         left:4px;
+//         background-color: white;
+//         border: 2px solid black;
+// }
+.authheader ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    margin-top: 2em;
+    div{
+        display: flex;
+        
+        z-index: 100 !important;
+        align-items: center;
+        width: 100%;
+        gap:2em;
+        
+    }
+    .left{
+        justify-content: flex-start;
+        padding-left: 5em;
+    }
+    .right{
+        justify-content: flex-end;
+        padding-right: 5em;
+    }
+    
+    #userInHeader{
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        object-fit: cover;
+        font-size:3rem;
+    }
+    .userProfile{
+        position: relative;
+        // background-color: aqua;
+        z-index: 100;
+    }
+    .more{
+        // display: flex;
+        position: absolute;
+        opacity: 0;
+        width: 300%;
+        top: 60%;
+        left: -50%;
+        // background-color: aqua;
+        z-index: -1 !important;
+        transition: opacity .2s ease;
+        pointer-events: none    ;
+        ul{
+            border: 3px solid black;
+            border-radius: 5px;
+            // padding: .2em;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            // background-color: black;
+            padding: 3px;
+            // &::before{
+            //     position: absolute;
+            //     top:-25%;
+            //     left: 45%;
+
+            //     content: '';
+            //     width: 3px;
+            //     height: 13px;
+            //     background-color: black;
+            // }
+            li{
+                // color: white;
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,104 @@
+.Explore{
+    min-height: 80vh;
+    margin-top: 3em;
+    .search{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #story,#user{
+        // display: none;
+    }
+    input[type="radio"] {
+        display: none;
+    }
+    label{
+        padding: .8em;
+        // background-color: rgb(165, 165, 165);
+        // &:nth-of-type(1){
+        //     border-radius: 1em 0 0 1em;
+        // }
+        // &:last-of-type{
+        //     border-radius: 0 1em 1em 0;
+        // }
+    }
+    .selector{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // margin-top: 1em;
+    }
+    .checkedradio{
+        // background-color: black;
+        // color: white;
+        transition: .5s ease;
+        
+        text-decoration: underline;
+
+    }
+      
+      
+    .searchbar{
+        border: 5px double black;
+        width: 100%;
+        max-width: 300px;
+        height:50px;
+        padding: 1em;
+        // background-color: aqua;
+    }
+    .searchbtn{
+        height:50px;
+        width:50px;
+        background-color: black;
+        color: white;
+        font-size: 1.2rem;
+        border: none;
+
+    }
+}
+.exploreList{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    // padding-top:5em;
+    padding: 5em 1em;
+    gap:3em;    
+    // div{
+    //     margin: 1em;
+    //     margin-top: 5em;
+    // }
+}
+
+.userListCard{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3em;
+    box-shadow: 5px 5px 0px -2px rgb(255, 255, 255),5px 5px 0px 0px black;
+    
+    margin:1em;
+    position: relative;
+    .content{
+        text-align: left;
+        flex-grow:2;
+    }
+    .image{
+        flex-grow:1;
+        margin-right: 3em;
+        
+        img{
+            width:70px;
+            height:70px;
+            object-fit: cover;
+            // border-radius: 50%;
+            position: absolute;
+            top:-10px;
+            left:-10px;
+            
+
+        }
+    }
+    // background-color:grey
+}

@@ -1,0 +1,50 @@
+@media screen and (max-width : 1050px){
+    
+    .authheader{
+        
+        .bigHeader{
+            display: none;
+        }
+        .miniHeader{
+            padding: 2em 2em;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            
+            z-index: 1000000 !important;
+            .menu{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: .3em;
+                font-size: 2rem;
+            }
+        }
+        .inAuthHeader{
+            flex-direction: column !important;
+            gap: 1em;
+        }
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .hero{
+        h1{
+            font-size: 15vw !important;
+        }
+    }
+    .intro{
+        h1{
+            font-size: 10vw !important;
+        }
+    }
+    .Uploadphoto{
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 1000px){
+    .simpleCard{
+        flex-direction: column;
+    }
+}

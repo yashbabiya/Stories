@@ -1,0 +1,78 @@
+/* background: adjust-hue($base-color, $offset + $spectrum / $num-colors * $i); */
+$colors: red, orange, yellow, blue, purple;
+$repeat: 20;
+
+.intro{
+    h1{
+        font-size: 5rem;
+    }
+    margin-bottom: 10em;
+
+}
+#last{
+    // color: white;
+}
+.loader{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3em;
+}
+.share{
+    
+    margin-top:2em;
+   
+    i{
+        margin-left: 0.5em;
+    }
+}
+.home{
+    padding: 0em 2em;
+}
+.recents{
+    font-size: 3em;
+    margin:0 0 3em 0;
+}
+.cardList{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+.hero{
+    margin-top: 5em;
+    .top{
+        width: 100%;
+        h1{
+            text-align: left;
+            font-size: 10rem;
+            font-weight: bolder;
+        }
+    }
+
+    .roundtext{
+        text-transform: uppercase;
+        animation: 10s rotated infinite linear;
+    }
+    @keyframes rotated {
+        0%{
+            transform: rotate(0);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+
+    .bottom{
+        width: 100%;
+        transform: translateY(-100px);
+        h1{
+            text-align: right;
+            font-size: 10rem;
+            font-weight: bolder;
+        }
+    }
+}

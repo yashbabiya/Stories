@@ -1,0 +1,781 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap");
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    -webkit-animation: App-logo-spin infinite 20s linear;
+            animation: App-logo-spin infinite 20s linear;
+  }
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@-webkit-keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#green {
+  color: black;
+}
+
+.logo {
+  text-transform: uppercase !important;
+  background-color: black;
+  color: white;
+  padding: 1em 2em;
+  position: relative;
+  height: 50px;
+  z-index: 100 !important;
+  box-shadow: 5px 5px 0px -2px rgb(255, 255, 255), 5px 5px 0px 0px black;
+  letter-spacing: 7px;
+  font-size: 12px;
+  font-weight: bolder;
+}
+
+.miniHeader {
+  display: none;
+  position: relative;
+  z-index: 100 !important;
+}
+
+.authheader ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  margin-top: 2em;
+}
+.authheader ul div {
+  display: flex;
+  z-index: 100 !important;
+  align-items: center;
+  width: 100%;
+  gap: 2em;
+}
+.authheader ul .left {
+  justify-content: flex-start;
+  padding-left: 5em;
+}
+.authheader ul .right {
+  justify-content: flex-end;
+  padding-right: 5em;
+}
+.authheader ul #userInHeader {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  font-size: 3rem;
+}
+.authheader ul .userProfile {
+  position: relative;
+  z-index: 100;
+}
+.authheader ul .more {
+  position: absolute;
+  opacity: 0;
+  width: 300%;
+  top: 60%;
+  left: -50%;
+  z-index: -1 !important;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.authheader ul .more ul {
+  border: 3px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 3px;
+}
+.authheader ul .more ul li {
+  cursor: pointer;
+}
+
+.Explore {
+  min-height: 80vh;
+  margin-top: 3em;
+}
+.Explore .search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Explore input[type=radio] {
+  display: none;
+}
+.Explore label {
+  padding: 0.8em;
+}
+.Explore .selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Explore .checkedradio {
+  transition: 0.5s ease;
+  text-decoration: underline;
+}
+.Explore .searchbar {
+  border: 5px double black;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  padding: 1em;
+}
+.Explore .searchbtn {
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+}
+
+.exploreList {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5em 1em;
+  gap: 3em;
+}
+
+.userListCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3em;
+  box-shadow: 5px 5px 0px -2px rgb(255, 255, 255), 5px 5px 0px 0px black;
+  margin: 1em;
+  position: relative;
+}
+.userListCard .content {
+  text-align: left;
+  flex-grow: 2;
+}
+.userListCard .image {
+  flex-grow: 1;
+  margin-right: 3em;
+}
+.userListCard .image img {
+  width: 70px;
+  height: 70px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5em 5em;
+  color: white;
+  background-color: black;
+}
+.footer div {
+  width: 100%;
+}
+.footer .left {
+  text-align: left;
+}
+.footer .left .name {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.5em;
+}
+.footer .left p {
+  text-transform: uppercase;
+  font-weight: lighter;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+}
+.footer .right {
+  text-align: right;
+  font-size: 30px;
+}
+.footer .right i {
+  margin: 0em 0.5em;
+}
+
+/* background: adjust-hue($base-color, $offset + $spectrum / $num-colors * $i); */
+.intro {
+  margin-bottom: 10em;
+}
+.intro h1 {
+  font-size: 5rem;
+}
+
+.loader {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3em;
+}
+
+.share {
+  margin-top: 2em;
+}
+.share i {
+  margin-left: 0.5em;
+}
+
+.home {
+  padding: 0em 2em;
+}
+
+.recents {
+  font-size: 3em;
+  margin: 0 0 3em 0;
+}
+
+.cardList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.hero {
+  margin-top: 5em;
+}
+.hero .top {
+  width: 100%;
+}
+.hero .top h1 {
+  text-align: left;
+  font-size: 10rem;
+  font-weight: bolder;
+}
+.hero .roundtext {
+  text-transform: uppercase;
+  -webkit-animation: 10s rotated infinite linear;
+          animation: 10s rotated infinite linear;
+}
+@-webkit-keyframes rotated {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotated {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.hero .bottom {
+  width: 100%;
+  transform: translateY(-100px);
+}
+.hero .bottom h1 {
+  text-align: right;
+  font-size: 10rem;
+  font-weight: bolder;
+}
+
+.card {
+  max-width: 500px;
+  margin: 0 1em;
+}
+.card div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardWithImage {
+  max-width: 500px;
+  width: 100%;
+  padding: 1em 1em;
+  box-shadow: 5px 5px 0px -2px rgb(255, 255, 255), 5px 5px 0px 0px black;
+  transition: 1s ease;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2em;
+}
+.cardWithImage .content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.cardWithImage:hover {
+  box-shadow: 5px 5px 0px 0px black;
+}
+.cardWithImage img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 1s ease;
+}
+.cardWithImage h2 {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+.cardWithImage p {
+  font-size: 1.2rem;
+}
+
+.cardWithoutImage {
+  max-width: 500px;
+  width: 100%;
+  padding: 1em 2em;
+  box-shadow: 5px 5px 0px -2px rgb(255, 255, 255), 5px 5px 0px 0px black;
+  transition: 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.cardWithoutImage:hover {
+  box-shadow: 5px 5px 0px 0px black;
+}
+.cardWithoutImage h2 {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+.cardWithoutImage p {
+  font-size: 1.2rem;
+}
+
+.Uploadphoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10em 1em;
+}
+.Uploadphoto input[type=file] {
+  display: none;
+}
+.Uploadphoto div {
+  width: 100%;
+}
+.Uploadphoto .preview {
+  width: 100%;
+  max-height: 500px;
+  margin: 5em 0;
+  border: 5px double black;
+  min-height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.Uploadphoto u {
+  line-height: 3em;
+}
+
+.doubleBorderedInput {
+  border: 5px double black;
+  width: 100%;
+  max-width: 500px;
+  padding: 1em;
+}
+
+.doubleBorderdButton {
+  text-transform: uppercase !important;
+  background-color: black;
+  color: white;
+  padding: 1em 2em;
+  position: relative;
+  height: 50px;
+  z-index: 100 !important;
+  box-shadow: 5px 5px 0px -2px rgb(255, 255, 255), 5px 5px 0px 0px black;
+  letter-spacing: 7px;
+  font-size: 12px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.questionPage {
+  width: 100%;
+}
+.questionPage .main {
+  text-align: left;
+  padding: 0em 1em;
+  margin-bottom: 3em;
+}
+.questionPage .main pre {
+  width: 100%;
+  white-space: pre-wrap;
+  margin-bottom: 5em;
+}
+.questionPage .main .comments {
+  display: flex;
+  flex-direction: column;
+  margin: 3em 0;
+  gap: 2em;
+}
+.questionPage .main .comments .commentCard {
+  width: 100%;
+  padding: 2em;
+  border-radius: 2em;
+  display: flex;
+  flex-direction: column;
+}
+.questionPage .main .comments .commentCard h1 {
+  font-size: 2rem;
+}
+.questionPage .main .comments .commentCard .commentDetails {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2em;
+}
+.questionPage .main .comments .commentCard .commentDetails .postDetails {
+  width: 100%;
+  max-width: 300px;
+}
+.questionPage .main .comments .commentCard .commentDetails .postDetails p {
+  font-size: 0.7em;
+  color: rgb(32, 32, 32);
+}
+.questionPage .main .comments .commentCard .commentDetails .vote {
+  display: flex;
+  width: 100%;
+  max-width: 100px;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.questionPage .main .comments .commentCard .commentDetails .vote i {
+  font-size: 2rem;
+}
+
+.heroForPage {
+  transform: translateY(-20vh);
+  width: 100%;
+  z-index: -1;
+  height: 90vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: relative;
+}
+
+.heroDiv::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0.5;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-30vh);
+  padding-top: 30vh;
+}
+
+.heroDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: translateY(-30vh);
+}
+.heroDiv .heroCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10em 0;
+  margin-bottom: 12em;
+  padding: 10em 2em;
+  padding-top: 30vh;
+  z-index: 100000;
+}
+.heroDiv .heroCont h1 {
+  max-width: 50ch;
+  font-size: 3rem;
+}
+.heroDiv .save {
+  cursor: pointer;
+  display: flex;
+  gap: 1em;
+  font-weight: bolder;
+  font-size: 30px;
+  margin-bottom: 3em;
+}
+
+.PostPage {
+  min-height: 80vh;
+  padding: 5em 1em;
+}
+.PostPage .doubleBorderedInput {
+  border: 5px double black;
+  width: 100%;
+  max-width: 500px;
+  padding: 1em;
+}
+.PostPage .postForm {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  align-items: center;
+  justify-content: center;
+}
+.PostPage .postForm div {
+  width: 100%;
+  max-width: 500px;
+}
+.PostPage .postForm div p {
+  text-align: left;
+}
+.PostPage .postForm button {
+  text-transform: uppercase !important;
+  background-color: black;
+  color: white;
+  padding: 1em 2em;
+  position: relative;
+  height: 50px;
+  z-index: 100 !important;
+  box-shadow: 5px 5px 0px -2px rgb(255, 255, 255), 5px 5px 0px 0px black;
+  letter-spacing: 7px;
+  font-size: 12px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.profilePage {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5em;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+.profilePage .userImage {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.profilePage .personalinfo p {
+  font-size: 0.8em;
+}
+.profilePage .bio {
+  margin-top: 2em;
+  text-align: left;
+}
+.profilePage .checkedradio {
+  transition: 0.5s ease;
+  text-decoration: underline;
+}
+.profilePage input[type=radio] {
+  display: none;
+}
+.profilePage label {
+  padding: 0.8em;
+}
+.profilePage .switchSt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.simpleCard {
+  display: flex;
+  margin: 1em 0;
+  background-color: aqua;
+}
+.simpleCard h1 {
+  padding: 1em;
+  font-size: 2rem;
+  text-align: left;
+  width: 100%;
+}
+.simpleCard .notImg {
+  text-align: center;
+}
+.simpleCard img {
+  height: 300px;
+  width: 100%;
+  max-width: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  padding: 5em 2em;
+}
+.login h1 {
+  font-size: 5rem;
+}
+.login div {
+  width: 100%;
+  max-width: 500px;
+}
+.login div p {
+  text-align: left;
+}
+
+.notFound {
+  min-height: 80vh;
+  padding-top: 5em;
+  position: relative;
+}
+.notFound .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notFound .title h1 {
+  font-size: 10rem;
+}
+.notFound p {
+  color: gray;
+}
+.notFound .square1 {
+  width: 100px;
+  height: 100px;
+  background-color: aquamarine;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+.notFound .square2 {
+  width: 200px;
+  height: 200px;
+  background-color: rgb(0, 117, 252);
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+.notFound .round {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
+@media screen and (max-width: 1050px) {
+  .authheader .bigHeader {
+    display: none;
+  }
+  .authheader .miniHeader {
+    padding: 2em 2em;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000000 !important;
+  }
+  .authheader .miniHeader .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+    font-size: 2rem;
+  }
+  .authheader .inAuthHeader {
+    flex-direction: column !important;
+    gap: 1em;
+  }
+}
+@media screen and (max-width: 920px) {
+  .hero h1 {
+    font-size: 15vw !important;
+  }
+
+  .intro h1 {
+    font-size: 10vw !important;
+  }
+
+  .Uploadphoto {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .simpleCard {
+    flex-direction: column;
+  }
+}
+* {
+  font-family: "Poppins", sans-serif !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+body {
+  margin: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.spinner {
+  max-width: 50px;
+}/*# sourceMappingURL=index.css.map */

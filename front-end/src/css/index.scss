@@ -1,0 +1,47 @@
+@import '_app';
+@import '_skeleton';
+@import '_questionPage';
+// @import '_questionList';
+@import './components/authHeader';
+@import './pages/explore';
+@import './components/footer';
+@import './pages/home';
+@import './components/questionList';
+@import './pages/upload';
+@import './pages/question';
+@import './pages/.post';
+@import './pages/userprofile';
+@import './components/cardForList';
+@import './pages/_login.scss';
+@import './pages/_notFound';
+@import '_media';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap');
+*{
+  font-family: 'Poppins', sans-serif !important;
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#root{
+  width: 100%;
+  overflow-x: hidden;
+
+}
+a{
+  text-decoration: none;
+  color: #000;
+}
+body {
+    margin: 0;
+    
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+.spinner{
+  max-width: 50px;
+  
+}
