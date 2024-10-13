@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -22,11 +22,11 @@ import "../css/index.css";
 
 export default function Header() {
   const { isLoggedin, setIsLoggedin } = React.useContext(AuthContext);
-  const history = useHistory();
+  const history = useNavigate();
   const logout = () => {
     localStorage.clear();
     setIsLoggedin(false);
-    history.push("/");
+    history("/");
   };
   const userdata = JSON.parse(localStorage.getItem("userData"));
   return (

@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { url } from "../API/data";
 import { AuthContext, StorageContext, userDataContext } from "../App";
-import { Redirect, Router, useHistory } from "react-router";
+import { Redirect, Router, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -16,7 +16,7 @@ export default function Login() {
   let { isLoggedin, setIsLoggedin } = useContext(AuthContext);
   let { userData, setuserData } = useContext(userDataContext);
 
-  let history = useHistory();
+  let history = useNavigate();
 
   const loginAction = async () => {
 
@@ -40,7 +40,7 @@ export default function Login() {
           })
         );
         setIsLoggedin(true);
-        history.push("/");
+        history("/");
       })
       .catch((err) => {
         alert("Invalid Username or password");

@@ -44,14 +44,6 @@ export default function Explore() {
     [isLoading, hasnew]
   );
 
-  useEffect(() => {
-    // axios
-    //   .get(url + `/question/all?page=${1}`)
-    //   .then((res) => {
-    //     setque((prev) => [...prev, ...res.data]);
-    //   })
-    //   .catch((err) => alert(err));
-  }, []);
 
   const search = async () => {
     setisLoading(true);

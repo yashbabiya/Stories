@@ -1,6 +1,8 @@
 import { AnimatePresence,motion } from 'framer-motion';
 import { createContext, useContext, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
+import { Routes } from 'react-router-dom';
+
 import './css/index.css';
 import AuthLayout from './layouts/AuthLayout';
 import Layout from './layouts/Layout';
@@ -16,6 +18,7 @@ import Question from './pages/Question';
 import Signup from './pages/Signup';
 import UploadImage from './pages/UploadImage';
 import UserProfile from './pages/UserProfile';
+import { Navigate } from 'react-router-dom'
 
 
 let isAuthenticated = false
@@ -37,7 +40,7 @@ function App() {
       <Route path={props.path} render={props.component} {...props} />
      </props.layout>:
 
-      <Redirect to={props.redirectat} />
+      <Navigate to={props.redirectat} />
     :
     <props.layout>
       <Route path={props.path} render={props.component} {...props}/>
@@ -45,23 +48,15 @@ function App() {
     )
   }
 
-
-  const CheckCond = (props) =>{
-    return(
-    (props.isPrivate)?
-    props.conditionForEnter?
-        
-      
-      <Route path={props.path} render={props.component} {...props} />
-     :
-
-      <Redirect to={props.redirectat} />
-    :
-    
-      <Route path={props.path} render={props.component} {...props}/>
-    
-    )
-  }
+  const CheckCond = (props) => {
+    // If it's private and the condition for entering is false, redirect
+    if (props.isPrivate && !props.conditionForEnter) {
+      return <Navigate to={props.redirectat} />;
+    }
+  
+    // Return a Route if conditions are met
+    return <Route path={props.path} element={<props.component />} />;
+  };
   // let routes = [
   //   {
   //     "path":'/',
@@ -85,44 +80,36 @@ function App() {
         <StorageContext.Provider value={{remember,setRemember}}>
           <userDataContext.Provider value={{userData,setuserData}}>
             <AnimatePresence>
-            <Switch>
-              <Route exact path='*'>
-                {isLoggedin ? 
-                <AuthLayout>
-                  <Switch>
-                    <CheckCond exact path='/'     component={Home} />
-                    <CheckCond exact path='/postquestion'  component={PostQuestion} isPrivate={true} conditionForEnter={isLoggedin} redirectat='/login' />
-                    <CheckCond exact path='/uploadimage'  component={UploadImage} isPrivate={true} conditionForEnter={isLoggedin} redirectat='/login' />
-                    <CheckCond exact path='/question'      component={Question} />
-
-                    <CheckCond exact path='/user'          component={UserProfile}/>
-                    <CheckCond exact path='/edituser'      component={EditProfile} isPrivate={true} conditionForEnter={isLoggedin} redirectat='/login'/>
-
-                    <CheckCond exact path='/explore'       component={Explore}/>
-                    <CheckCond exact path='/editstory'     component={EditQuestion} isPrivate={true} conditionForEnter={isLoggedin} redirectat='/'/>
-                    <Route path='*' component={NotFound} />
-
-                  </Switch>
-                </AuthLayout> 
-                  :
-                <NotAuthLayout>
-                  <Switch>
-                    <CheckCond exact path='/'             component={Home} />
-                    <CheckCond exact path='/postquestion'  component={PostQuestion} isPrivate={true} conditionForEnter={isLoggedin} redirectat='/login' />
-                    <CheckCond exact path='/question'      component={Question} />
-
-                    <CheckCond exact path='/user'          component={UserProfile}/>
-
-                    <CheckCond exact path='/explore'       component={Explore}/>
-                    <CheckCond exact path='/login'        component={Login} isPrivate={isLoggedin} conditionForEnter={!isLoggedin} redirectat='/'/>
-                    <CheckCond exact path='/signup'       component={Signup} isPrivate={isLoggedin} conditionForEnter={!isLoggedin}  redirectat='/'/>
-                    <Route path='*' component={NotFound} />
-                  </Switch>         
-                </NotAuthLayout> }
-              </Route>
-              
-              
-            </Switch>
+            <Routes>
+      <Route path='*' element={isLoggedin ? (
+        <AuthLayout>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/postquestion' element={isLoggedin ? <PostQuestion /> : <Navigate to='/login' />} />
+            <Route path='/uploadimage' element={isLoggedin ? <UploadImage /> : <Navigate to='/login' />} />
+            <Route path='/question' element={<Question />} />
+            <Route path='/user' element={<UserProfile />} />
+            <Route path='/edituser' element={isLoggedin ? <EditProfile /> : <Navigate to='/login' />} />
+            <Route path='/explore' element={<Explore />} />
+            <Route path='/editstory' element={isLoggedin ? <EditQuestion /> : <Navigate to='/' />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </AuthLayout>
+      ) : (
+        <NotAuthLayout>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/postquestion' element={isLoggedin ? <PostQuestion /> : <Navigate to='/login' />} />
+            <Route path='/question' element={<Question />} />
+            <Route path='/user' element={<UserProfile />} />
+            <Route path='/explore' element={<Explore />} />
+            <Route path='/login' element={!isLoggedin ? <Login /> : <Navigate to='/' />} />
+            <Route path='/signup' element={!isLoggedin ? <Signup /> : <Navigate to='/' />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </NotAuthLayout>
+      )} />
+    </Routes>
             </AnimatePresence>
           </userDataContext.Provider>
         </StorageContext.Provider>

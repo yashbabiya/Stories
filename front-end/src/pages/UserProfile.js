@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import axios from "axios";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { url } from "../API/data";
 import BasicTabs from "../components/BasicTabs";
 import CardForList from "../components/CardForList";

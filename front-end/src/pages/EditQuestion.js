@@ -1,14 +1,14 @@
 import axios from "axios";
 import { motion } from "framer-motion";
 import React, { useState,useEffect } from "react";
-import { useHistory, useLocation } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { url } from "../API/data";
 
 export default function EditQuestion() {
     const [title, settitle] = useState("")
     const [des, setdes] = useState("")
     const [data, setData] = useState()
-    const history = useHistory();
+    const history = useNavigate();
     const search = useLocation().search;
     const id = new URLSearchParams(search).get("id");
     const postQuestion = () =>{
@@ -18,7 +18,7 @@ export default function EditQuestion() {
           }
         }).then( (res)=>{
           // alert("done")
-            history.push(`/`)
+            history(`/`)
         } ).catch(()=>{
             alert('you are not the user who has posted this')
         })

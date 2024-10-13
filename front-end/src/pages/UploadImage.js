@@ -1,11 +1,11 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { useHistory, useLocation } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import { url } from '../API/data'
 
 export default function UploadImage() {
-    const history = useHistory();
+    const history = useNavigate();
     const search = useLocation().search;
     const id = new URLSearchParams(search).get('id');
     const img = new URLSearchParams(search).get('img')
@@ -48,7 +48,7 @@ export default function UploadImage() {
                 .then((response) => response.json())
                 .then((result) => {
                     console.log('Success:', result);
-                    history.push('/')   
+                    history('/')   
                 })
                 .catch((error) => {
                     console.error('Error:', error);

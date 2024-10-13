@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { url } from "../API/data";
 import { AuthContext, StorageContext, userDataContext } from "../App";
-import { Redirect, Router, useHistory } from "react-router";
+import { Redirect, Router, useNavigate } from "react-router";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -14,14 +14,14 @@ export default function Signup() {
   const [password, setpassword] = useState("");
   const [email, setemail] = useState("");
 
-  let history = useHistory();
+  let history = useNavigate();
 
   const signupaction = async () => {
     await axios
       .post(url + "/auth/signup", { user: uname, password, email })
       .then(() => {
         alert("User successfully created login with that account");
-        history.push("/login");
+        history("/login");
       })
       .catch((err) => {
         alert("User not Created");

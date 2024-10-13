@@ -2,7 +2,7 @@ import { Button, TextField } from "@mui/material";
 import axios from "axios";
 import { motion } from "framer-motion";
 import React, { useContext, useEffect, useState } from "react";
-import { Route, useHistory, useLocation, useParams } from "react-router";
+import { Route, useNavigate, useLocation, useParams } from "react-router";
 import {Link} from 'react-router-dom';
 import { url } from "../API/data";
 import SkeletonX from "../components/Skeleton";
@@ -11,7 +11,7 @@ import colors from "../helpers/colors";
 import imageExists from "../helpers/imgExists";
 
 export default function Question() {
-  const history = useHistory();
+  const history = useNavigate();
   const search = useLocation().search;
   const id = new URLSearchParams(search).get("id");
 
@@ -26,7 +26,7 @@ export default function Question() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  useEffect(async () => {
+  useEffect(() => {
     axios.get(url + `/question/getQuestion?id=${id}`).then((res) => {
       setData(res.data);
       console.log(res.data);
@@ -43,7 +43,7 @@ export default function Question() {
         });
       }
       setloading(false);
-    });
+    }).catch();
 
     axios
       .get(url + `/answer/ansOfQuestion?id=${id}`)
@@ -154,7 +154,7 @@ export default function Question() {
       headers: { authorization: localStorage.getItem("token") },
     }).then(() => {
       alert("Question is Deleted")
-      history.push('/')
+      history('/')
     });
   }
   return (

@@ -6,12 +6,12 @@ import { Button } from '@mui/material';
 import React, { useState } from 'react'
 import axios from 'axios';
 import { url } from '../API/data';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
 export default function PostQuestion() {
     const [title, settitle] = useState("")
     const [des, setdes] = useState("")
-    const history = useHistory();
+    const history = useNavigate();
     const postQuestion = () =>{
         
         axios.post(url+'/question/post',{title,des},{headers: {
@@ -19,7 +19,7 @@ export default function PostQuestion() {
           }
         }).then( (res)=>{
           // alert("done")
-            history.push(`/uploadimage?id=${res.data._id}`)
+            history(`/uploadimage?id=${res.data._id}`)
         } )
     }
     return (

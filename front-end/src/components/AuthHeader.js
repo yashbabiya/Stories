@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import { AuthContext } from "../App";
@@ -10,13 +10,13 @@ import { motion } from "framer-motion";
 
 export default function AuthHeader() {
   const { isLoggedin, setIsLoggedin } = React.useContext(AuthContext);
-  const history = useHistory();
+  const history = useNavigate();
   const ref = React.useRef()
   const [style, setStyle] = React.useState(true)
   const logout = () => {
     localStorage.clear();
     setIsLoggedin(false);
-    history.push("/");
+    history("/");
   };
   const userdata = JSON.parse(localStorage.getItem("userData"));
   return (

@@ -80,10 +80,13 @@ export default function Home() {
       })
       .catch((err) => alert(err));
   };
-  useEffect(async () => {
-    setisLoading(true);
-    await getQuestions();
-    setisLoading(false);
+  useEffect(() => {
+    const _fetch = async () => {
+      setisLoading(true);
+      await getQuestions();
+      setisLoading(false);
+    }
+    _fetch()
   }, [pageCounter]);
   return (
     <motion.div

@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import axios from "axios";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { url } from "../API/data";
 import { AuthContext } from "../App";
 
@@ -10,7 +10,7 @@ export default function EditProfile() {
   const [title, settitle] = useState();
   const [des, setdes] = useState();
   const [selectedFile, setSelectedFile] = useState();
-  const history = useHistory();
+  const history = useNavigate();
   const { isLoggedin, setIsLoggedin } = React.useContext(AuthContext);
 
 
@@ -40,13 +40,13 @@ export default function EditProfile() {
           console.log("opoppo",result);
             localStorage.clear();
             setIsLoggedin(false);
-            history.push("/login");
+            history("/login");
           })
           .catch((error) => {
             alert("Image not uploaded");
             localStorage.clear();
             setIsLoggedin(false);
-            history.push("/login");
+            history("/login");
           });
       });
   };
