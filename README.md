@@ -1,7 +1,7 @@
 # Stories
 A full stack story sharing project build with React , Express and MongoDB
 
-Live : https://rocky-everglades-60417.herokuapp.com/
+Live : https://stories-share.vercel.app/
 
 Figma File : https://www.figma.com/file/UiLOcj3tpQR3lEAmY91m8P/Stories
 
