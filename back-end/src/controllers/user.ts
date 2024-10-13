@@ -141,10 +141,9 @@ export const saveImagePath = async(req:Request,res:Response,fname:string)=>{
         ,function (err:Error, docs:Document) {
             if(err)
             return res.status(400)
-            return res.send(docs)
         })
         
-        return res.send(req.body.image);
+        return
 }
 
 export const isUserNameAvailable = async(uname:string)=>{
@@ -164,51 +163,44 @@ export const editUserDetails = {
         next();
     },
     controller:async (req:Request,res:Response) => {
-        let currUser = await getUserDataFromTocken(req.headers.authorization || "")
-        if(currUser == null)
-        return res.status(401).send("User not exist")
-        
-        if(currUser._id != req.query.id)
-        return res.status(400).send("Not correct User") 
+        try {
 
-        const uname = req.body?.username || ""
-        
-
-        if(uname!="")
-        {
+            let currUser = await getUserDataFromTocken(req.headers.authorization || "")
+            if(currUser == null)
+            return res.status(401).send("User not exist")
             
-            if(!(await isUserNameAvailable(uname))){
+            if(currUser._id != req.query.id)
+            return res.status(400).send("Not correct User") 
+    
+            const uname = req.body?.username || ""
+            const obj = req.body
             
-            return res.status(400).send("Username already exists")
+    
+            if(uname!="")
+            {
+                
+                if(!(await isUserNameAvailable(uname))){
+                
+                return res.status(400).send("Username already exists")
+                }
+    
+               
+                let ext = path.extname(currUser.profile);
+                const newProfile = `${uname}`+ext;
+                const newProfilePath = `./public/uploads/users/${uname}${ext}`;
+                const oldProfilePath = `./public/uploads/users/${currUser.profile}`
+                obj.profile = newProfile
+                fs.rename(oldProfilePath, newProfilePath, function(err) {
+                    if ( err ) console.log('ERROR: ' + err);
+                });
             }
-
-           
-            let ext = path.extname(currUser.profile);
-            const newProfile = `${uname}`+ext;
-            const newProfilePath = `./public/uploads/users/${uname}${ext}`;
-            const oldProfilePath = `./public/uploads/users/${currUser.profile}`
-            console.log(oldProfilePath,"____________________",newProfilePath);
-            
-            req.body = {
-                ...req.body,
-                profile:newProfile
-            }
-            fs.rename(oldProfilePath, newProfilePath, function(err) {
-                if ( err ) console.log('ERROR: ' + err);
-            });
+    
+            Auth.findByIdAndUpdate(currUser._id,obj,function (err:Error,docs:Document) {})
+    
+    
+            return res.send("UserDetails Updated")
+        } catch(err) {
+            console.log(err);
         }
-
-        await Auth.findByIdAndUpdate(currUser._id,req.body,function (err:Error,docs:Document) {
-            if(err)
-            return res.status(500)
-           
-            console.log(docs);
-            
-        })
-
-
-        return res.send("UserDetails Updated")
-
-
     }
 }

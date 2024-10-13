@@ -2,7 +2,7 @@ import express, { NextFunction } from "express";
 import multer from "multer";
 import path from "path";
 import { allUsers, userById,searchUser, saveImagePath, editUserDetails } from "../controllers/user";
-import { autherization } from "../helpers/general";
+import { autherization, wrapAsyncRoutes } from "../helpers/general";
 import fs from "fs"
 import { getUserDataFromTocken } from "../helpers/getUserDataFromTocken";
 import { nextTick } from "process";
@@ -24,9 +24,6 @@ const Storage = multer.diskStorage({
         let files = fs.readdirSync('public/uploads/users');
         if(files.includes(user.username+'.jpg')){
             fs.unlinkSync('public/uploads/users/'+user.username+'.jpg')
-
-            
-            
         }
         
          cb(null,user.username+'.jpg');
@@ -44,11 +41,6 @@ router.post('/upload',autherization,
 
 (req,res,next:NextFunction)=>{
     upload(req,res,(err)=>{
-        if (err instanceof multer.MulterError) {
-            return res.status(500).json(err)
-        } else if (err) {
-            return res.status(500).json(err)
-        }
         next();
     })
 }

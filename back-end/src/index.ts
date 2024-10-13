@@ -9,6 +9,7 @@ import answer from './routes/answer'
 import dotenv from 'dotenv'
 import { Mongoose } from "mongoose";
 import bodyParser from "body-parser";
+import { errorHandler } from "./helpers/general";
 const app = express();
 
 
@@ -21,7 +22,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 
-dotenv.config({path:process.cwd()+'/src/.env'}) 
+dotenv.config() 
 
 // word
 
@@ -37,7 +38,8 @@ app.get('/',(req,res)=>{
 
 
 mongoose.connect(
-    process.env.DB_CONN || ""
+    process.env.DB_CONN || "",
+    { useNewUrlParser: true }
 )
 .then((res)=>{
     console.log("connected to database")
@@ -47,6 +49,6 @@ mongoose.connect(
     })
     
 }).catch((err)=>{
-    console.log("nooooo");
+    console.log("nooooo", err,  process.env.DB_CONN);
     
 })

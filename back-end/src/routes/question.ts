@@ -2,9 +2,10 @@ import express from "express";
 import multer from "multer";
 import path from "path";
 import { postQuestion,getAllQuestion, followQuestion, getQuestionById, editQuestion, searchQuestion, saveImagePath, deleteQuestion } from "../controllers/question";
-import { autherization } from "../helpers/general";
+import { autherization, wrapAsyncRoutes } from "../helpers/general";
 
 const router = express();
+
 let img="";
 const Storage = multer.diskStorage({
     destination:(req,file,cb)=>cb(null,__dirname+'../../../public/uploads/questions'),
